@@ -1,3 +1,75 @@
 canvas{
-    background-color: blue;
+    border-radius: 15px;
+    width: 900px;
+    
+}
+
+body {
+    font-family: 'Rubik', sans-serif;
+}
+
+.background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.background img {
+    width: 100%;
+    height: 100%;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  #numberBehind {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+.ticket {
+    position: relative;
+    background-image: url(../resources/ticket-bg.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 15px;
+    border: 5px solid rgb(122, 57, 88);
+  }
+
+.ticket-numbers-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /*modificar escala, posicion y demas. Mueve un elemento en X.*/
+    display: flex;
+    justify-content: space-evenly;
+    text-align: center;
+    font-size: 8rem;
+    font-weight: 800;
+    /*gap: 2rem; /*gap es como margin pero para rem, se hace cosas raras*/
+    width: 100%;
+    padding-inline: 2rem;
+}
+
+.ticket-number{
+    user-select: none;  /*el usuario no puede seleccionar, no hay trampita*/
+    text-align: center;
 }
