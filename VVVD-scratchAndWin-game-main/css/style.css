@@ -1,0 +1,106 @@
+*{
+  padding: 0;
+  margin: 0;
+  user-select: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+canvas {
+  border-radius: 15px;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  font-family: 'Rubik', sans-serif;
+}
+
+.background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.background img {
+  width: 100%;
+  height: 100%;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ticket {
+  position: relative;
+  border-radius: 15px;
+  border: 5px solid rgb(122, 57, 88);
+  width: 33vw;
+  height: 33vh;
+}
+
+.ticket-bg{
+  background-image: url(../resources/ticket-bg.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+
+}
+
+.ticket-numbers-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /*modificar escala, posicion y demas. Mueve un elemento en X.*/
+  display: flex;
+  justify-content: space-evenly;
+  text-align: center;
+  font-size: 8vw;
+  font-weight: 800;
+  gap: 5vw; /*gap es como margin pero para rem, se hace cosas raras*/
+  width: 100%;
+  padding-inline: 2rem;
+  z-index: -1;
+}
+
+.ticket-number {
+  user-select: none;
+  /*el usuario no puede seleccionar, no hay trampita*/
+  text-align: center;
+}
+
+.result-div{
+  position: absolute;
+  top: 50%;
+  left: 50%;     
+  transform: translate(-50%,-50%);
+
+}
+
+#result-img{
+  animation: opacity 0.5s ease-in-out forwards;
+
+}
+
+@keyframes opacity {
+  0%{opacity: 0;}
+  100%{opacity: 1;}
+}
