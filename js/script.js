@@ -1,14 +1,4 @@
 const resultDiv = document.getElementById("result-div")
-//Da un random en el ticket
-let numbers = []
-let ticketNumbers = Array.from(document.getElementsByClassName("ticket-number"))
-ticketNumbers.forEach(element => {
-    let randomNumber = Math.floor(Math.random() * 4 + 1)
-    element.textContent = randomNumber
-    numbers.push(randomNumber) //es una funcion por ende va con parentesis
-    //playScratchSound();
-});
-
 let finished = false;
 
 let canvas = document.getElementById("canvas");
@@ -20,14 +10,26 @@ painting.onload = () => {
     canvas.width = rect.width;
     canvas.height = rect.height;
     context.drawImage(painting, 0, 0);
+
+    //Da un random en el ticket
+    let numbers = []
+    let ticketNumbers = Array.from(document.getElementsByClassName("ticket-number"))
+    ticketNumbers.forEach(element => {
+        let randomNumber = Math.floor(Math.random() * 4 + 1)
+        element.textContent = randomNumber
+        numbers.push(randomNumber) //es una funcion por ende va con parentesis
+        //playScratchSound();
+    });
 };
+
+
 
 let isPainting = false;
 let prevX, prevY; // Previous mouse position
 
 function scratchPaint(event) {
     if (isPainting && !finished) {
-
+        playScratchSound()
         let radius = 50;
         let rect = canvas.getBoundingClientRect();
 
@@ -113,8 +115,6 @@ function resetGame() {
         numbers.push(randomNumber) //es una funcion por ende va con parentesis
         //playScratchSound();
     });
-    context.clearRect(0, 0, canvas.width, canvas.height)
-    context.drawImage(painting, 0, 0)
     let context = canvas.getContext("2d");
     let painting = new Image();
     painting.src = "../resources/ticket-paint.png";

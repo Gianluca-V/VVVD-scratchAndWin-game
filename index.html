@@ -1,40 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap" rel="stylesheet">
-    <title>Rasca y Gana</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap" rel="stylesheet">
+  <title>Rasca y Gana</title>
 </head>
+
 <body>
-    <div class="background" draggable="false"><img src="resources/background-img.png" alt="background-img" draggable="false"></div>
-     <div class="ticket" id="ticket">
-        <div id="result-div" class="result-div"></div>
-        <div class="ticket-bg"></div>
-        <div class="ticket-numbers-container">
-            <div class="ticket-number"></div>
-            <div class="ticket-number"></div>
-            <div class="ticket-number"></div>
-        </div>
-        <canvas id="canvas"></canvas>
-     </div>
+  <div class="background" draggable="false"><img src="resources/background-img.png" alt="background-img" draggable="false"></div>
+
+  <div class="game-container">
+    <div class="ticket" id="ticket">
+      <div id="result-div" class="result-div"></div>
+      <div class="ticket-bg"></div>
+      <div class="ticket-numbers-container">
+        <div class="ticket-number"></div>
+        <div class="ticket-number"></div>
+        <div class="ticket-number"></div>
+      </div>
+      <canvas id="canvas"></canvas>
+    </div>
+
+    <button onclick="openBet()" class="open-bet modal-open"><div><img src="resources/coin-img.png" alt="coin-img" draggable="false"><p>Apuesta</p></div></button>
+    <button onclick="openModal()" class="modal-open instructions-open"><div><img src="resources/coin-img.png" alt="coin-img" draggable="false"><p>Como jugar</p></div></button>
+  </div>
+
+  <div id="myModal" class="modal">
+    <img src="resources/modal-img.png" alt="modal-background-img">
+    <span onclick="closeModal()" class="close">X</span>
+    <div class="modal-content" draggable="false">
+      <p>Rasca el ticket para conseguir premios, si los 3 elementos coninciden ganaste. El juego terminara cuando hayas
+        rascado casi todo el ticket</p>
+    </div>
+  </div>
+
+  <div id="myBetModal" class="modal">
+    <img src="resources/modal-img.png" alt="modal-background-img">
+    <span onclick="closeBet()" class="close">X</span>
+    <div class="modal-content" draggable="false">
+      <label for="bet-input">Apuesta</label>
+      <input type="number" name="bet-input" class="bet-input" id="bet-input" placeholder="000" value="1" min="1">
+    </div>
 
 
-     <script src="js/script.js"></script>
+    <script src="js/script.js"></script>
 
-     <audio id="winSound">
-        <source src="resources/resources_game-win.mp3" type="audio/mpeg">
-      </audio>
-      
-      <audio id="loseSound">
-        <source src="resources/resources_game-lose.mp3" type="audio/mpeg">
-      </audio>
-      
-      <audio id="scratchSound">
-        <source src="resources/scribble.mp3" type="audio/mpeg">
-      </audio>
+    <audio id="winSound">
+      <source src="resources/resources_game-win.mp3" type="audio/mpeg">
+    </audio>
+
+    <audio id="loseSound">
+      <source src="resources/resources_game-lose.mp3" type="audio/mpeg">
+    </audio>
+
+    <audio id="scratchSound">
+      <source src="resources/scribble.mp3" type="audio/mpeg">
+    </audio>
+
+
+    <script>
+      // Función para abrir el modal
+      function openModal() {
+        document.getElementById("myModal").style.display = "flex";
+        document.getElementById("myModal").classList.add("modal-active");
+      }
+
+      // Función para cerrar el modal
+      function closeModal() {
+        document.getElementById("myModal").style.display = "none";
+        document.getElementById("myModal").classList.remove("modal-active");
+      }
+
+      // Función para abrir el modal
+      function openBet() {
+        document.getElementById("myBetModal").style.display = "flex";
+        document.getElementById("myBetModal").classList.add("modal-active");
+      }
+
+      // Función para cerrar el modal
+      function closeBet() {
+        document.getElementById("myBetModal").style.display = "none";
+        document.getElementById("myBetModal").classList.remove("modal-active");
+      }
+    </script>
+
 </body>
+
 </html>
