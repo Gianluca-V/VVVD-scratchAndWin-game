@@ -97,7 +97,33 @@ function scratchPaint(event) {
             resultDiv.innerHTML += '<img src="resources/lose-img.png" alt="" id="result-img">'
             playLoseSound();//Otra vez, no lo pierdas de vista tonta
         }
+        setTimeout(() => {
+            resetGame()
+        }, 3000)
     }
+}
+
+function resetGame() {
+    finished = false
+    numbers = []
+    resultDiv.innerHTML = ""
+    ticketNumbers.forEach(element => {
+        let randomNumber = Math.floor(Math.random() * 4 + 1)
+        element.textContent = randomNumber
+        numbers.push(randomNumber) //es una funcion por ende va con parentesis
+        //playScratchSound();
+    });
+    context.clearRect(0, 0, canvas.width, canvas.height)
+    context.drawImage(painting, 0, 0)
+    let context = canvas.getContext("2d");
+    let painting = new Image();
+    painting.src = "../resources/ticket-paint.png";
+    painting.onload = () => {
+        const rect = canvas.getBoundingClientRect();
+        canvas.width = rect.width;
+        canvas.height = rect.height;
+        context.drawImage(painting, 0, 0);
+    };
 }
 
 canvas.addEventListener("mousedown", function (event) {
