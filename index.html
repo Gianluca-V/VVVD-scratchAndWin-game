@@ -2,64 +2,39 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/style.css">
-    <title>Juego de vasos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap" rel="stylesheet">
+    <title>Rasca y Gana</title>
 </head>
 <body>
-    
-
-    <div class="game-container">
-        <div class="background" draggable="false"><img src="resources/background.png" alt="background-img" draggable="false"></div>
-        <div class="cups-container" id="cups-container" draggable="false"></div>
-        <div class="result-div" id="result-div">
+    <div class="background" draggable="false"><img src="resources/background-img.png" alt="background-img" draggable="false"></div>
+     <div class="ticket" id="ticket">
+        <div id="result-div" class="result-div"></div>
+        <div class="ticket-bg"></div>
+        <div class="ticket-numbers-container">
+            <div class="ticket-number"></div>
+            <div class="ticket-number"></div>
+            <div class="ticket-number"></div>
         </div>
-        <button onclick="openModal()" class="modal-open"><div><img src="resources/coin-img.png" alt="coin-img" draggable="false"><p>Como jugar</p></div></button>
-    </div>
+        <canvas id="canvas"></canvas>
+     </div>
 
-    
-    <div id="myModal" class="modal">
-        <img src="resources/modal-img.png" alt="modal-background-img">
-        <span onclick="closeModal()" class="close">X</span>
-        <div class="modal-content" draggable="false">
-            <p>Selecciona el vaso en el que crees que esta la pelota para ganar puntos       Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores dolore nobis asperiores quos! Officia, voluptatibus consectetur. Quos, voluptate! Ipsa facere, aliquid accusamus placeat hic aspernatur architecto obcaecati suscipit veritatis modi?  Lorem ipsum dolor sit amet consectetur adipisicing elit. Cumque voluptatibus molestiae at voluptate unde voluptatum laboriosam, suscipit, delectus debitis quae rem eveniet dolores illum, optio ipsam ab maxime magnam praesentium!</p>
-        </div>
-    </div>
 
-    
-    <script>
-        // Función para abrir el modal
-        function openModal() {
-          document.getElementById("myModal").style.display = "flex";
-          document.getElementById("myModal").classList.add("modal-active");
-        }
-      
-        // Función para cerrar el modal
-        function closeModal() {
-          document.getElementById("myModal").style.display = "none";
-          document.getElementById("myModal").classList.remove("modal-active");
-        }
-    </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/Flip.min.js"></script>
-    <script src="js/main.js"></script>
+     <script src="js/script.js"></script>
 
-    <audio id="winSound">
-        <source src="sounds/resources_game-win.mp3" type="audio/mpeg">
+     <audio id="winSound">
+        <source src="resources/resources_game-win.mp3" type="audio/mpeg">
       </audio>
       
       <audio id="loseSound">
-        <source src="sounds/resources_game-lose.mp3" type="audio/mpeg">
+        <source src="resources/resources_game-lose.mp3" type="audio/mpeg">
       </audio>
       
-      <audio id="cupSound">
-        <source src="sounds/resources_game-cup.mp3" type="audio/mpeg">
+      <audio id="scratchSound">
+        <source src="resources/scribble.mp3" type="audio/mpeg">
       </audio>
-
-      <audio id="cupMoveSound">
-        <source src="sounds/game-cup-flip.mp3" type="audio/mpeg">
-      </audio>
-      
 </body>
 </html>
