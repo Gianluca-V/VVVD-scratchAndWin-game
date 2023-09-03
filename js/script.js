@@ -1,10 +1,15 @@
+
+
 const resultDiv = document.getElementById("result-div")
 let finished = false;
+
+let numbers;
+let ticketNumbers;
 
 let canvas = document.getElementById("canvas");
 let context = canvas.getContext("2d");
 let painting = new Image();
-painting.src = "../resources/ticket-paint.png";
+painting.src = "resources/ticket-paint.png";
 painting.onload = () => {
     const rect = canvas.getBoundingClientRect();
     canvas.width = rect.width;
@@ -12,11 +17,12 @@ painting.onload = () => {
     context.drawImage(painting, 0, 0);
 
     //Da un random en el ticket
-    let numbers = []
-    let ticketNumbers = Array.from(document.getElementsByClassName("ticket-number"))
+    numbers = []
+    ticketNumbers = Array.from(document.getElementsByClassName("ticket-number"))
     ticketNumbers.forEach(element => {
         let randomNumber = Math.floor(Math.random() * 4 + 1)
         element.textContent = randomNumber
+        element.style.color = getRandomColor();
         numbers.push(randomNumber) //es una funcion por ende va con parentesis
         //playScratchSound();
     });
@@ -75,9 +81,9 @@ function scratchPaint(event) {
         // Update the previous position
         prevX = x;
         prevY = y;
+
         const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
         const data = imageData.data;
-
         const pixelCount = data.length / 4;
         let clearedPixelCount = 0;
 
@@ -93,10 +99,12 @@ function scratchPaint(event) {
         finished = true;
         if (numbers.every((num) => num == numbers[0])) {
             resultDiv.innerHTML += '<img src="resources/win-img.png" alt="" id="result-img">'
+            document.getElementById("my-canvas").style.display = "block";
             playWinSound(); //no te olvides soft
         }
         else {
             resultDiv.innerHTML += '<img src="resources/lose-img.png" alt="" id="result-img">'
+            document.getElementById("my-canvas").style.display = "none";
             playLoseSound();//Otra vez, no lo pierdas de vista tonta
         }
         setTimeout(() => {
@@ -106,12 +114,14 @@ function scratchPaint(event) {
 }
 
 function resetGame() {
+    document.getElementById("my-canvas").style.display = "none";
     finished = false
     numbers = []
     resultDiv.innerHTML = ""
     ticketNumbers.forEach(element => {
         let randomNumber = Math.floor(Math.random() * 4 + 1)
         element.textContent = randomNumber
+        element.style.color = getRandomColor();
         numbers.push(randomNumber) //es una funcion por ende va con parentesis
         //playScratchSound();
     });
@@ -172,3 +182,14 @@ function playScratchSound() {
     scratchSound.currentTime = 0;
     scratchSound.play();
 }
+
+function getRandomColor() {
+    const colors = ["red", "orange", "yellow", "green", "black", "purple", "pink", "violet", "magenta", "lime", "hot pink", "gold", "fuchsia"];
+    let color = colors[Math.floor(Math.random() * colors.length)];
+
+    return color;
+}
+
+var confettiSettings = { target: 'my-canvas' };
+var confetti = new ConfettiGenerator(confettiSettings);
+confetti.render();
