@@ -127,7 +127,7 @@ function resetGame() {
     });
     let context = canvas.getContext("2d");
     let painting = new Image();
-    painting.src = "../resources/ticket-paint.png";
+    painting.src = "resources/ticket-paint.png";
     painting.onload = () => {
         const rect = canvas.getBoundingClientRect();
         canvas.width = rect.width;
